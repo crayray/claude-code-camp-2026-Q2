@@ -16,6 +16,12 @@ bower_components/
 .yarn/unplugged/
 .pnpm-store/
 .cache/
+__pycache__/
+*.pyc
+pip-wheel-metadata/
+.bundle/
 
 # Generated dependency / vendor files
 vendor/
+*.egg-info/
+.eggs/
