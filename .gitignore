@@ -25,3 +25,6 @@ pip-wheel-metadata/
 vendor/
 *.egg-info/
 .eggs/
+
+# Generated world data (kept on disk for visualizations, not tracked)
+week0_explore/preview/data/world/**/*.json
