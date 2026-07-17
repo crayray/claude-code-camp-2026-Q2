@@ -15,7 +15,7 @@ The technical goal of preweek explore is to determine how well do Agent Architec
          - The agentic loop is code driven orchestration
 
 ## Technical Uncertainty
-    - I'm uncertain how to teach the agent how to more intelligently navigate the game and world. 
+- I'm uncertain how to teach the agent how to more intelligently navigate the game and world. 
       - How do we build a graph or map of the world that the agent can access and remember where it's location is? 
    -  We're working with different architectures and there's technical uncerataintly about the pros and cons of each architecture. 
     - I'm uncertain if a coding hardnesses loop is effective enough to drive a non-coding workload. 
