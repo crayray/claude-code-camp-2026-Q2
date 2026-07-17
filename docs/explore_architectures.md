@@ -31,3 +31,54 @@ A specialized agent loop, potentially using an MCP server connected to
 the MUD SDK, would provide better reliability, visibility, and token
 efficiency.
 
+Use coding harnesses for coding and for specialized agents, make your own loop. 
+
+## 2. Agent Skills driven by main agent eg. ~/.skills
+
+A very common way to drive specific functionality is via Agent Skills which is an open format for agents to use across coding harnesses and SDKs. 
+
+### Observation for creating the skill with Sonnet 5
+- It created a skill and used the player and world data files to store data on each skill run
+- The cursor process for creating a skill seemed a lot easier - the agent loop seems to be better at troubleshooting environmental issues and finding the paths of least resistance for creating scripts than Claude
+- The skill calls a python script and for each move, the agent adds a tbaMUD command as a parameter
+
+### Observation Sonnet 5 (Navigate to the bakery and list items)
+- It navigated me to the bakery, listed the items and also provided context on the character's money status. 
+- It took 2 minutes to navigate through the game to find the bakery. 
+
+### Observation Haiku 4.5 (Navigate to the bakery and list items)
+- Interestingly when I ran the play-mud skill with Haiku 4.5, it returned the bakery items much faster and with fewer tool calls - it only took 55 seconds, vs 2 minutes with Sonnet 5
+- And I just realized that the player is the same when each skill logs in..... perhaps when I called the play-mud skill with Haiku, dummy was still at the bakery in the game, so it made it easier for Haiku to navigate there
+
+### Observation Haiku 4.5 (find players guild and practice kick)
+- Interestingly my skill was able to complete the task of practicing a kick at the Guild of Swordsmen. It said it successfully practiced a kick with the dummy character using `practice kick` command. 
+
+## Observation Haiku 4.5 (defeat massive minotaur)
+- It initially explores the landscape to undertand where it is and is trying to navigate to the minotaur
+- It hasn't automatically updated the skills.md file
+- It seems to not have a strategic or prioritized approach to exploring the world for the minotaur, but it hasn't stopped to ask for more information. 
+
+## General observation
+Using the official Cursor skill creator it seemed to create a pretty good skill - it created a python script that it used to navigate and interact with MUD. 
+
+Initially when giving it a simple task like "find the bakery and list all the items they sell", it pretty quickly navigated the world, found the bakery and also provided context on the user's status. For both Haiku and Sonnet, this seemed to work easily. It could also easily execute practiciing a kick. 
+
+However, when moving to a more advanced goal, like defeating a massive minotaur (that is an impossible task), the agent seemed to simply be searching aimlessly, instead of trying to create a strategy and prioritize certain locations over others. It also did not stop and ask for more feedback at any point, nor did it refer to the player and world data documents to help record and guide in real time. It got distracted and went to go fight a different monster to level up in order to fight the minotaur. 
+
+Overall I think Cursor's agent loop is "smarter" - as I watched the instructor do the same thing in Claude Code, my agents in cursor seemed to more seamlessly troubleshoot or fix issues and in the first try created better architecture. 
+
+Some limitations I saw: 
+- Agent lacks dynamic task prioritization
+- Agent does not continuously re-plan
+- Agent has poor observability
+- Token usage is diffuclt to measure per action
+- Memory updates rae not truly real-time
+- Pathfinding is inefficient
+- The agent becomes overly focused on a single objective. 
+
+## Tecnical Conclusions
+Agent Skills does work, and quite well, but we will need a much more complex state, world and player management. We really need to have auditable visibility of the agent for reporting and token usage and to review the play journey. We need a custom agentic loop. We want an agent that acts and spends less time asking what should it do.
+
+We should probably be defining a player persona which describes how the player likes to play, based on a mixture of modes: Risk mode, exploration mode, etc. 
+
+When we enter a goal we should see a goal decomponsition or planning so we can see how it will reason the goal. 
