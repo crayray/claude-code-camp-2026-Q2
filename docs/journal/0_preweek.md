@@ -17,10 +17,10 @@ The technical goal of preweek explore is to determine how well do Agent Architec
 ## Technical Uncertainty
 - I'm uncertain how to teach the agent how to more intelligently navigate the game and world. 
       - How do we build a graph or map of the world that the agent can access and remember where it's location is? 
-   -  We're working with different architectures and there's technical uncerataintly about the pros and cons of each architecture. 
-    - I'm uncertain if a coding hardnesses loop is effective enough to drive a non-coding workload. 
-    - I'm uncertain if AI model's thinking mode and other intelligent parameters is sufficient enough to hold memory and drive decisions for our task. 
-    - I'm uncertain that a coding harness can interact with a MUD without an interface or SDK or manage the telnet session
+-  We're working with different architectures and there's technical uncerataintly about the pros and cons of each architecture. 
+- I'm uncertain if a coding hardnesses loop is effective enough to drive a non-coding workload. 
+- I'm uncertain if AI model's thinking mode and other intelligent parameters is sufficient enough to hold memory and drive decisions for our task. 
+- I'm uncertain that a coding harness can interact with a MUD without an interface or SDK or manage the telnet session
 
 ## Technical Hypothesis
  - Based on [Ref 1] i think we'll have issues with the coding harness driving the MUD without an interface bc we don't have a a defined API, we are driving commands over a protocol we need to live monitor.
