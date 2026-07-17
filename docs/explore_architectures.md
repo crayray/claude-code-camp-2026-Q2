@@ -1,7 +1,7 @@
 # Explore Architectures
 ## A Cursor agent file with referenced files eg AGENT.md, @~/docs/*.MD
 
-Observations (Sonnet 5 Medium):
+### Observations (Sonnet 5 Medium):
 - The agent first checked to see if the MUD server port was open with nc
 - The Agent checked for python version and then wrote a python script to interact with the MUD over a raw socket
 - The agent connected, logged in and ran look commands and navigated through the city. 
@@ -11,7 +11,7 @@ Observations (Sonnet 5 Medium):
 - It did not read unrelated repository files
 
 
-Observations (Haiku 4.5):
+### Observations (Haiku 4.5):
 - Agent connected to the game at localhost and logged in using nc first (failed), then it used telnet
 - Initially it had trouble logging in because it said the player server wasn't interpreting its commands properly. It looked for other players logged in and then somehow logged in as them 
 - It still used python to explore, though I don't see any python files that it generated. 
